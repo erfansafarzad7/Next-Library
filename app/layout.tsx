@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
 import { ReactNode } from "react";
@@ -18,11 +17,6 @@ const bebasNeue = localFont({
     { path: "/fonts/BebasNeue-Regular.ttf", weight: "400", style: "normal" },
   ],
   variable: "--bebas-neue",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
