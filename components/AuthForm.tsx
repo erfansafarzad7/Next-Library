@@ -22,6 +22,8 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import ImageUpload from "@/components/imageUpload";
 import { FIELD_NAMES, FIELD_TYPES } from "@/constants";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 interface Props<T extends FieldValues> {
   type: "SIGN_IN" | "SIGN_UP";
@@ -36,6 +38,7 @@ const AuthForm = <T extends FieldValues>({
   defaultValues,
   onSubmit,
 }: Props<T>) => {
+  const router = useRouter();
   const isSignIn = type === "SIGN_IN";
 
   const form: UseFormReturn<T> = useForm({
@@ -43,7 +46,15 @@ const AuthForm = <T extends FieldValues>({
     defaultValues: defaultValues as DefaultValues<T>,
   });
 
-  const handleSubmit: SubmitHandler<T> = async (data) => {};
+  const handleSubmit: SubmitHandler<T> = async (data) => {
+    const result = await onSubmit(data);
+    if (result.success) {
+      toast(`Successfully ${isSignIn ? "Signed in" : "Signed up"}`);
+      await router.push("/");
+    } else {
+      toast(`Error ${isSignIn ? "Signed in" : "Signed up"}`);
+    }
+  };
 
   return (
     <div className="flex flex-col gap-4">
