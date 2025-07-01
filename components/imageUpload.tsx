@@ -12,6 +12,7 @@ const {
 } = config;
 
 const authenticator = async () => {
+  // @ts-expect-error
   try {
     const response = await fetch(`${config.env.apiEndpoint}/api/auth/imagekit`);
 
@@ -35,6 +36,7 @@ const ImageUpload = ({
 }: {
   onFileChange: (filePath: string) => void;
 }) => {
+  // @ts-expect-error
   const ikUploadRef = useRef(null);
   const [file, setFile] = useState<{ filePath: string } | null>(null);
 

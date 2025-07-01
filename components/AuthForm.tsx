@@ -50,7 +50,7 @@ const AuthForm = <T extends FieldValues>({
     const result = await onSubmit(data);
     if (result.success) {
       toast(`Successfully ${isSignIn ? "Signed in" : "Signed up"}`);
-      await router.push("/");
+      router.push("/");
     } else {
       toast(`Error ${isSignIn ? "Signed in" : "Signed up"}`);
     }
