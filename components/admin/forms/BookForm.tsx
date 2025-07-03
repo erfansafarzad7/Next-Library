@@ -187,7 +187,10 @@ const BookForm = ({ type, ...book }: Props) => {
                 Primary Color
               </FormLabel>
               <FormControl>
-                <ColorPicker />
+                <ColorPicker
+                  onPickerChange={field.onChange}
+                  value={field.value}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -209,7 +212,6 @@ const BookForm = ({ type, ...book }: Props) => {
                   className="book-form_input"
                 />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
