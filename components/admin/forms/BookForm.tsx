@@ -164,7 +164,15 @@ const BookForm = ({ type, ...book }: Props) => {
                 Book Image
               </FormLabel>
               <FormControl>
-                <FileUpload />
+                <FileUpload
+                  type="image"
+                  accept="image/*"
+                  placeholder="Upload a book cover"
+                  folder="books/covers"
+                  variant="light"
+                  onFileChange={field.onChange}
+                  value={field.value}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -216,7 +224,15 @@ const BookForm = ({ type, ...book }: Props) => {
                 Book Trailer
               </FormLabel>
               <FormControl>
-                <FileUpload />
+                <FileUpload
+                  type="video"
+                  accept="video/*"
+                  placeholder="Upload a book trailer"
+                  folder="books/videos"
+                  variant="light"
+                  onFileChange={field.onChange}
+                  value={field.value}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
