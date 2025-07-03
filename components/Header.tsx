@@ -15,7 +15,7 @@ const Header = ({ session }: { session: Session }) => {
       </Link>
 
       {session && (
-        <ul className="flex flex-row items-center gap-8">
+        <ul className="flex flex-row gap-8">
           <li>
             <form
               action={async () => {
