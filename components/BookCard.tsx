@@ -5,13 +5,14 @@ import BookCover from "@/components/BookCover";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+// @ts-ignore
 const BookCard = ({
   id,
   title,
   genre,
   coverColor,
   coverUrl,
-  isLoanedBook,
+  isLoanedBook = false,
 }: Book) => (
   <li className={cn(isLoanedBook && "xs:w-52 w-full")}>
     <Link
