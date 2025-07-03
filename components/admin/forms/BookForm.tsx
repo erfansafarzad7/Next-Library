@@ -19,6 +19,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import FileUpload from "@/components/FileUpload";
 import ColorPicker from "@/components/admin/ColorPicker";
+import { createBook } from "@/lib/admin/actions/book";
+import { toast } from "sonner";
 
 interface Props extends Partial<Book> {
   type?: "create" | "update";
@@ -43,7 +45,17 @@ const BookForm = ({ type, ...book }: Props) => {
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof bookSchema>) => {};
+  const onSubmit = async (values: z.infer<typeof bookSchema>) => {
+    const result = await createBook(values);
+
+    if (result.success) {
+      toast("Book created successfully");
+
+      router.push(`/admin/books/${result.data.id}`);
+    } else {
+      toast("Failed to create book");
+    }
+  };
 
   return (
     <Form {...form}>
@@ -256,7 +268,6 @@ const BookForm = ({ type, ...book }: Props) => {
                   className="book-form_input"
                 />
               </FormControl>
-
               <FormMessage />
             </FormItem>
           )}
