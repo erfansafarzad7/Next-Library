@@ -23,8 +23,8 @@ const bebasNeue = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Test Project",
-  description: "This is a test project.",
+  title: "Library",
+  description: "Library Management System",
 };
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {
