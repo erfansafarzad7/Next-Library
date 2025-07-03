@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,6 +5,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Session } from "next-auth";
 import { signOut } from "@/auth";
 import { Button } from "@/components/ui/button";
+import { getInitials } from "@/lib/utils";
 
 const Header = ({ session }: { session: Session }) => {
   return (
