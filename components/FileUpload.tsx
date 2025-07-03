@@ -39,7 +39,6 @@ interface Props {
   folder: string;
   variant: "dark" | "light";
   onFileChange: (filePath: string) => void;
-  value?: string;
 }
 
 const FileUpload = ({
@@ -49,12 +48,10 @@ const FileUpload = ({
   folder,
   variant,
   onFileChange,
-  value,
 }: Props) => {
+  // @ts-expect-error
   const ikUploadRef = useRef(null);
-  const [file, setFile] = useState<{ filePath: string | null }>({
-    filePath: value ?? null,
-  });
+  const [file, setFile] = useState<{ filePath: string | null }>(null);
   const [progress, setProgress] = useState(0);
 
   const styles = {
@@ -68,14 +65,12 @@ const FileUpload = ({
 
   const onError = (error: any) => {
     console.log(error);
-
     toast(`${type} upload failed`);
   };
 
   const onSuccess = (res: any) => {
     setFile(res);
     onFileChange(res.filePath);
-
     toast(`${type} uploaded successfully`);
   };
 
