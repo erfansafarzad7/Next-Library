@@ -128,15 +128,18 @@ const FileUpload = ({
           }
         }}
       >
-        <Image
-          src="icons/upload.svg"
-          alt="upload-icon"
-          width={20}
-          height={20}
-          className="object-contain"
-        />
-
-        <p className={cn("text-base", styles.placeholder)}>{placeholder}</p>
+        {!file && (
+          <>
+            <Image
+              src="icons/upload.svg"
+              alt="upload-icon"
+              width={20}
+              height={20}
+              className="object-contain"
+            />
+            <p className={cn("text-base", styles.placeholder)}>{placeholder}</p>
+          </>
+        )}
 
         {file && (
           <p className={cn("upload-filename", styles.text)}>{file.filePath}</p>
